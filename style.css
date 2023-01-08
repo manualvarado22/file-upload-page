@@ -33,6 +33,7 @@ body {
     color: #ffffff;
     max-width: 980px;
     margin-top: 5rem;
+    margin-bottom: 2rem;
     margin-left: auto;
     margin-right: auto;
     padding: 4rem 2rem;
@@ -63,4 +64,26 @@ body {
 
 .file-upload-icon {
     font-size: 4rem;
+}
+
+.uploaded-files {
+    max-width: 980px;
+    margin: 2rem auto;
+}
+
+.uploaded-files-list {
+    list-style-type: none;
+}
+
+.uploaded-files-list li {
+    margin-bottom: 1rem;
+    padding: 1rem 2rem;
+    box-shadow: 0 1px 1px rgba(0, 0, 0, 0.1);
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.remove-file {
+    cursor: pointer;
 }
