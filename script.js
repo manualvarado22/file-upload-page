@@ -14,12 +14,28 @@ function returnFileSize(size) {
     }
 }
 
-function removeFilesList() {
+function clearFilesList() {
     $('.uploaded-files-list').remove();
 }
 
+// https://stackoverflow.com/questions/3144419/how-do-i-remove-a-file-from-the-filelist
+function removeFileFromInput(index) {
+    const files = fileInput.files;
+    const dataTransfer = new DataTransfer();
+
+    for (let i = 0; i < files.length; i++) {
+        if (i !== index) {
+            dataTransfer.items.add(files[i]);
+        }
+    }
+
+    fileInput.files = dataTransfer.files;
+
+    console.log(files, fileInput.files);
+}
+
 function displayAddedFiles() {
-    removeFilesList();
+    clearFilesList();
 
     const currentFiles = fileInput.files;
 
@@ -30,7 +46,7 @@ function displayAddedFiles() {
             const $fileIcon = $('<span><i class="fa-solid fa-file"></i><span>');
             const $fileName = $('<span>' + file.name + '</span>');
             const $fileSize = $('<span>' + returnFileSize(file.size) + '</span>');
-            const $fileRemoveIcon = $('<span><i class="fa-solid fa-xmark remove-file"></i><span>');
+            const $fileRemoveIcon = $('<span class="remove-file"><i class="fa-solid fa-xmark"></i><span>');
             const $fileItem = $('<li></li>');
 
             $fileItem.append($fileIcon);
@@ -38,6 +54,15 @@ function displayAddedFiles() {
             $fileItem.append($fileSize);
             $fileItem.append($fileRemoveIcon);
             $filesList.append($fileItem);
+
+            $fileRemoveIcon.click(function() {
+                const $item = $(this).parent();
+                const itemIndex = parseInt($item.index());
+                
+                removeFileFromInput(itemIndex);
+                
+                $item.remove();
+            });
         }
 
         $('.uploaded-files').append($filesList);
