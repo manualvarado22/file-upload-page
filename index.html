@@ -11,9 +11,33 @@
     <title>Add Files Page</title>
 </head>
 <body>
+    <div class="navbar-menu">
+        <div class="container">
+            <nav>
+                <a class="navbar-brand">FileUploader</a>
+
+                <ul class="navbar-items left">
+                    <li><a href="#">Convert</a></li>
+                    <li><a href="#">File Formats</a></li>
+                    <li><a href="#">Support</a></li>
+                </ul>
+                <ul class="navbar-items right">
+                    <li><a href="#">Login</a></li>
+                    <li><a href="#">Sign Up</a></li>
+                </ul>
+            </nav>
+        </div>
+    </div>
+
     <main>
         <div class="container">
-            <div class="file-drag-overlay"></div>
+            <div class="file-drag-overlay">
+                <div class="drop-files">
+                    <i class="fa-solid fa-plus add-file-icon"></i>
+
+                    <p>Drop your files anywhere</p>
+                </div>
+            </div>
 
             <div class="file-upload">
                 <div class=file-upload-area>
@@ -37,8 +61,10 @@
                 <div class="uploaded-files"></div>
             </div>
 
-            <form>
-                <input type="file" id="file">
+            <form class="visually-hidden" method="get" enctype="multipart/form-data">
+                <input type="file" id="file_uploads" name="file_uploads" multiple>
+
+                <button>Upload files</button>
             </form>
         </div>
     </main>

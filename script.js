@@ -1,7 +1,7 @@
 const $fileUploadArea = $('.file-upload-area');
 const $fileDragOverlay = $('.file-drag-overlay');
-const $fileInput = $('#file');
-const fileInput = document.getElementById('file');
+const $fileInput = $('#file_uploads');
+const fileInput = document.getElementById('file_uploads');
 
 // https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input/file#examples
 function returnFileSize(size) {
@@ -71,8 +71,8 @@ function displayAddedFiles() {
 
 // https://stackoverflow.com/a/5967981/4416259
 $fileUploadArea.click(function(event) {
-    if (! $(event.target).is('#file')) {
-        $('#file').trigger('click');
+    if (! $(event.target).is('#file_uploads')) {
+        $('#file_uploads').trigger('click');
     }
 });
 
