@@ -1,3 +1,4 @@
+const $body = $('body');
 const $fileUploadArea = $('.file-upload-area');
 const $fileDragOverlay = $('.file-drag-overlay');
 const $fileInput = $('#file_uploads');
@@ -69,6 +70,16 @@ function displayAddedFiles() {
     }
 }
 
+function addDraggingFileClass() {
+    $body.addClass('dragging-file');
+    $fileDragOverlay.addClass('dragging-file');
+}
+
+function removeDraggingFileClass() {
+    $body.removeClass('dragging-file');
+    $fileDragOverlay.removeClass('dragging-file');
+}
+
 // https://stackoverflow.com/a/5967981/4416259
 $fileUploadArea.click(function(event) {
     if (! $(event.target).is('#file_uploads')) {
@@ -82,8 +93,7 @@ $fileUploadArea.on('dragenter dragover', function(event) {
     event.preventDefault();
     event.stopPropagation();
 
-    $fileDragOverlay.css('display', 'block');
-    // console.log('Drag enter and Drag over');
+    addDraggingFileClass();
 });
 
 $fileDragOverlay.on('dragenter dragover', function(event) {
@@ -92,7 +102,7 @@ $fileDragOverlay.on('dragenter dragover', function(event) {
 });
 
 $fileDragOverlay.on('dragleave', function(event) {
-    $fileDragOverlay.css('display', 'none');
+    removeDraggingFileClass();
 });
 
 $fileUploadArea.on('drop', function(event) {
@@ -109,13 +119,11 @@ $fileDragOverlay.on('drop', function(event) {
     fileInput.files = event.originalEvent.dataTransfer.files;
     $fileInput.trigger('change');
 
-    $(this).css('display', 'none');
+    removeDraggingFileClass();
 });
 
 $fileInput.change(function() {
     const currentFiles = fileInput.files;
-
-    // console.log(currentFiles[0]);
 
     displayAddedFiles();
 });

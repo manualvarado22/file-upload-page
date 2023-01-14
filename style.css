@@ -11,6 +11,11 @@ body {
     font-family: sans-serif;
 }
 
+body.dragging-file {
+    position: relative;
+    overflow: hidden;
+}
+
 /* https://a11y-guidelines.orange.com/en/articles/accessible-hiding/ */
 .visually-hidden {
     width: 1px;
@@ -64,19 +69,31 @@ body {
 
 .file-drag-overlay {
     background-color: rgba(0, 0, 0, 0.7);
-    width: 100%;
-    height: 100%;
-    position: absolute;
+    width: 100vw;
+    height: 100vh;
+    position: fixed;
     top: 0;
-    bottom: 100%;
+/*    bottom: 100%;*/
     left: 0;
-    right: 100%;
+/*    right: 100%;*/
+/*    z-index: 1000;*/
     display: none;
+/*    overflow: hidden;*/
+}
+
+.file-drag-overlay.dragging-file {
+    display: block;
+}
+
+.drop-files {
+    pointer-events: none;
 }
 
 .drop-files .add-file-icon,
 .drop-files p {
     color: #ffffff;
+    width: 100%;
+    text-align: center;
     position: absolute;
     top: 50%;
     left: 50%;
