@@ -8,7 +8,7 @@
 
 body {
     background-color: #f3f0ec;
-    font-family: sans-serif;
+    font-family: "Open Sans", sans-serif;
 }
 
 body.dragging-file {
@@ -40,7 +40,8 @@ body.dragging-file {
 }
 
 .navbar-brand {
-    font-size: 1.4rem;
+    color: #3a3a3a;
+    font-size: 1.6rem;
     font-weight: 600;
 }
 
@@ -65,6 +66,11 @@ body.dragging-file {
 
 .navbar-items li:not(:first-child) {
     margin-left: 0.5rem;
+}
+
+.navbar-items li a {
+    color: #3a3a3a;
+    text-decoration: none;
 }
 
 .file-drag-overlay {
@@ -167,4 +173,46 @@ body.dragging-file {
 
 .remove-file {
     cursor: pointer;
+}
+
+footer {
+    margin-top: 5rem;
+}
+
+.footer-wrapper {
+    background-color: #3a3a3a;
+    color: #ffffff;
+    padding-top: 4rem;
+    padding-bottom: 4rem;
+}
+
+.footer-menu {
+    margin-bottom: 1.5rem;
+}
+
+.footer-menu ul {
+    list-style: none;   
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+}
+
+.footer-menu ul li:not(:first-child) {
+    margin-left: 0.5rem;
+}
+
+.footer-menu ul li a {
+    color: #ffffff;
+    font-weight: 500;
+    text-decoration: none;
+}
+
+.footer-menu ul li:not(:last-child)::after {
+    content: "|";
+    margin-left: 0.5rem;
+}
+
+.copyright {
+    text-align: center;
 }

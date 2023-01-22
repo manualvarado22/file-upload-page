@@ -7,7 +7,7 @@ const fileInput = document.getElementById('file_uploads');
 // https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input/file#examples
 function returnFileSize(size) {
     if (size < 1024) {
-        return `${number} bytes`;
+        return `${size} bytes`;
     } else if (size >= 1024 && size < 1048576) {
         return `${(size / 1024).toFixed(1)} KB`
     } else if (size >= 1048576) {
