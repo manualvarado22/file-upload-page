@@ -32,45 +32,108 @@ body.dragging-file {
 .container {
     max-width: 1140px;
     margin: 0 auto;
+    padding-left: 2rem;
+    padding-right: 2rem;
 }
 
-.navbar-menu {
-    padding-top: 1.5rem;
-    padding-bottom: 1.5rem;
+.navbar-menu a {
+    color: #3a3a3a;
+    text-decoration: none;
+}
+
+.navbar-wrapper {
+    padding-top: 1rem;
+    padding-bottom: 1rem;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    position: relative;
 }
 
 .navbar-brand {
-    color: #3a3a3a;
-    font-size: 1.6rem;
-    font-weight: 600;
+    font-size: 1.5rem;
+    font-weight: 700;
 }
 
-.navbar-menu nav, 
+.navbar-menu-container {
+    margin-left: 1.5rem;
+}
+
+.navbar-menu-container.mobile.visible {
+    /* These rules revert the .visually-hidden rules */
+    width: initial;
+    height: initial;
+    padding: initial;
+    margin: initial;
+    border: initial;
+    white-space: initial;
+    overflow: initial;
+    position: initial;
+    clip: initial;
+}
+
 .navbar-items {
+    list-style: none;
     display: flex;
     flex-direction: row;
     align-items: center;
 }
 
-.navbar-items {
-    list-style: none;
-}
-
-.navbar-items.left {
-    margin-left: 1rem;
-}
-
-.navbar-items.right {
-    margin-left: auto;
-}
-
 .navbar-items li:not(:first-child) {
-    margin-left: 0.5rem;
+    margin-left: 0.8rem;
 }
 
-.navbar-items li a {
-    color: #3a3a3a;
-    text-decoration: none;
+.mobile-menu-button {
+    font-size: 1.4rem;
+    cursor: pointer;
+    display: none;
+    position: absolute;
+    top: 1rem;
+    right: 2rem;
+}
+
+@media (max-width: 767px) {
+    .navbar-wrapper {
+        flex-direction: column;
+        align-items: baseline;
+    }
+
+    .navbar-menu-container.mobile {
+        /* This are exactly the same rules of the .visually-hidden class  */
+        width: 1px;
+        height: 1px;
+        padding: 0;
+        margin: -1px;
+        border: 0;
+        white-space: nowrap;
+        overflow: hidden;
+        position: absolute;
+        clip: rect(0, 0, 0, 0);
+    }
+
+    .navbar-menu-container, 
+    .navbar-menu-container.mobile, 
+    .navbar-menu-container.mobile.visible {
+        margin-left: 0;
+        margin-top: 1rem;
+    }
+
+    .navbar-items {
+        display: block;
+    }
+
+    .navbar-items li:not(:first-child) {
+        margin-left: 0;
+    }
+
+    .navbar-items li {
+        padding-top: 0.4rem;
+        padding-bottom: 0.4rem;
+    }
+
+    .mobile-menu-button {
+        display: initial;
+    }
 }
 
 .file-drag-overlay {
@@ -79,12 +142,8 @@ body.dragging-file {
     height: 100vh;
     position: fixed;
     top: 0;
-/*    bottom: 100%;*/
     left: 0;
-/*    right: 100%;*/
-/*    z-index: 1000;*/
     display: none;
-/*    overflow: hidden;*/
 }
 
 .file-drag-overlay.dragging-file {
@@ -175,6 +234,20 @@ body.dragging-file {
     cursor: pointer;
 }
 
+@media (max-width: 767px) {
+    .file-upload-area h2 {
+        font-size: 1.4rem;
+    }
+
+    .file-upload-icon {
+        font-size: 2rem;
+    }
+
+    .file-button {
+        font-size: 1rem;
+    }
+}
+
 footer {
     margin-top: 5rem;
 }
@@ -204,7 +277,6 @@ footer {
 
 .footer-menu ul li a {
     color: #ffffff;
-    font-weight: 500;
     text-decoration: none;
 }
 
@@ -215,4 +287,23 @@ footer {
 
 .copyright {
     text-align: center;
+}
+
+@media (max-width: 767px) {
+    .footer-menu ul {
+        display: block;
+        text-align: center;
+    }
+
+    .footer-menu ul li {
+        margin-bottom: 0.5rem;
+    }
+
+    .footer-menu ul li:not(:first-child) {
+        margin-left: 0;
+    }
+
+    .footer-menu ul li:not(:last-child)::after {
+        display: none;
+    }
 }

@@ -1,4 +1,6 @@
 const $body = $('body');
+const $mobileMenuButton = $('.mobile-menu-button');
+const $navbarMenuContainer = $('.navbar-menu-container');
 const $fileUploadArea = $('.file-upload-area');
 const $fileDragOverlay = $('.file-drag-overlay');
 const $fileInput = $('#file_uploads');
@@ -79,6 +81,13 @@ function removeDraggingFileClass() {
     $body.removeClass('dragging-file');
     $fileDragOverlay.removeClass('dragging-file');
 }
+
+$mobileMenuButton.click(function(event) {
+    event.preventDefault();
+    event.stopPropagation();
+
+    $navbarMenuContainer.toggleClass('visible');
+});
 
 // https://stackoverflow.com/a/5967981/4416259
 $fileUploadArea.click(function(event) {
